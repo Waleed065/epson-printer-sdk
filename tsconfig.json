@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "target": "es2020",
     "module": "commonjs",
     "esModuleInterop": true,
@@ -9,6 +12,7 @@
     "declaration": true,
     "noEmitOnError": true,
     "skipLibCheck": true,
+    "rootDir": "./src",
     "outDir": "./dist",
   }
 }

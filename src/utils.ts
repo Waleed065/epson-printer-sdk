@@ -4,7 +4,6 @@ type ImageData = {
   height: number;
 };
 
-
 export function getEnumAttr(name: string, value: string, regex: RegExp): string {
   if (!regex.test(value)) {
     throw new Error(`Parameter "${name}" is invalid`);
@@ -12,8 +11,20 @@ export function getEnumAttr(name: string, value: string, regex: RegExp): string 
   return ` ${name}="${value}"`;
 }
 
-export function getBoolAttr(name: string, value: string): string {
-  return ` ${name}="${!!value}"`;
+export function getBoolAttr(name: string, value: string | boolean): string {
+  if (typeof value === 'boolean') {
+    return ` ${name}="${value}"`;
+  }
+
+  if (value === 'true' || value === '1') {
+    return ` ${name}="true"`;
+  }
+
+  if (value === 'false' || value === '0') {
+    return ` ${name}="false"`;
+  }
+
+  throw new Error(`Parameter "${name}" is invalid`);
 }
 
 export function getIntAttr(name: string, value: number, min: number, max: number): string {
